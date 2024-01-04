@@ -1,29 +1,32 @@
-# github-actions-workflow-template
+# check-has-semver-label-workflow
 
-This repository is a template for creating reusable GitHub Actions Workflows. Go through the below checklist
-upon instantiating this template:
-- Rename and replace the content of [the placeholder](.github/workflows/reusable-workflow.yml) for your reusable workflow.
-- Edit this section and the usage section and replace with a meaningful description of your workflow
+This workflow checks that a pull request has exactly one semantic versioning label assigned. Those labels
+are:
+- no version
+- patch
+- minor
+- major
+
+If the PR doesn't have exactly one of those, the action fails and a status report is posted as a PR comment.
 
 ## Usage
 
 ```yaml
-name: Template Usage
+name: Check Has Semver Label
 
 on:
-  push: ~
-
-# This needs to be a superset of what your workflow requires
-permissions:
-  pull-requests: read
+  pull_request:
+    - opened
+    - synchronize
+    - reopened
+    - labeled
+    - unlabeled
 
 jobs:
-  example-job:
-    uses: infrastructure-blocks/github-actions-workflow-template/.github/workflows/reusable-workflow.yml@v1
-    with:
-      example-input: Nobody cares
-    secrets:
-      example-secret: ${{ secrets.EXAMPLE }}
+  check-has-semver-label:
+    permissions:
+      pull-requests: write
+    uses: infrastructure-blocks/check-has-semver-label-workflow/.github/workflows/check-has-semver-label.yml@v1
 ```
 
 ### Releasing

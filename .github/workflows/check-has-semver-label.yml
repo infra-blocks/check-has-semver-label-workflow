@@ -1,0 +1,35 @@
+name: Check Has Semver Label
+
+on:
+  workflow_call:
+    outputs:
+      matched-label:
+        description: |
+          The matched semantic versioning label. There will only be one.
+        value: ${{ jobs.check-semver-labels.outputs.matched-labels }}
+
+permissions:
+  pull-requests: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check-has-semver-label:
+    runs-on: ubuntu-22.04
+    permissions:
+      pull-requests: write
+    outputs:
+      matched-labels: ${{ steps.check-labels.outputs.matched-labels }}
+    steps:
+      - uses: infrastructure-blocks/check-labels-action@v1
+        id: check-labels
+        with:
+          one-of: no version, patch, minor, major
+      - if: ${{ failure() }}
+        uses: infrastructure-blocks/status-report-action@v1
+        with:
+          repository: infrastructure-blocks/check-has-semver-label-workflow
+          body: |
+            :boom: **Error**: expecting exactly one semantic versioning PR label. Please provide one of "no version", "patch", "minor", "major"
