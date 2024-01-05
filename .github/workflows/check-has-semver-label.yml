@@ -8,7 +8,7 @@ on:
         description: |
           The PR JSON payload, as string. We're only checking for labels, so as long as the labels fields follow the
           schema of PRs as described [here](https://docs.github.com/en/webhooks/webhook-events-and-payloads#pull_request),
-          it'll be all right. It defaults $${{ github.event.pull_request }}. If this field is undefined, it throws.
+          it'll be all right. It defaults github.event.pull_request. If this field is undefined, it throws.
         required: false
     outputs:
       matched-label:
