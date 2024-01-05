@@ -2,11 +2,19 @@ name: Check Has Semver Label
 
 on:
   workflow_call:
+    inputs:
+      pull-request:
+        type: string
+        description: |
+          The PR JSON payload, as string. We're only checking for labels, so as long as the labels fields follow the
+          schema of PRs as described [here](https://docs.github.com/en/webhooks/webhook-events-and-payloads#pull_request),
+          it'll be all right. It defaults $${{ github.event.pull_request }}. If this field is undefined, it throws.
+        required: false
     outputs:
       matched-label:
         description: |
           The matched semantic versioning label. There will only be one.
-        value: ${{ jobs.check-semver-labels.outputs.matched-labels }}
+        value: ${{ jobs.check-has-semver-label.outputs.matched-label }}
 
 permissions:
   pull-requests: write
@@ -21,11 +29,12 @@ jobs:
     permissions:
       pull-requests: write
     outputs:
-      matched-labels: ${{ steps.check-labels.outputs.matched-labels }}
+      matched-label: ${{ steps.check-labels.outputs.matched-labels }}
     steps:
       - uses: infrastructure-blocks/check-labels-action@v1
         id: check-labels
         with:
+          pull-request: ${{ inputs.pull-request }}
           one-of: no version, patch, minor, major
       - if: ${{ failure() }}
         uses: infrastructure-blocks/status-report-action@v1
