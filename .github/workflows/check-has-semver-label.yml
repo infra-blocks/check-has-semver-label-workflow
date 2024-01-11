@@ -25,13 +25,13 @@ jobs:
     permissions:
       pull-requests: write
     outputs:
-      matched-label: ${{ steps.check-labels.outputs.matched-labels }}
+      matched-label: ${{ fromJson(steps.check-labels.outputs.matched-labels)[0] }}
     steps:
-      - uses: infrastructure-blocks/check-labels-action@v1
+      - uses: docker://public.ecr.aws/infrastructure-blocks/check-labels-action:v2
         id: check-labels
         with:
           pull-request: ${{ inputs.pull-request }}
-          one-of: no version, patch, minor, major
+          exactly-once: '["no version", "patch", "minor", "major"]'
       - if: ${{ failure() }}
         uses: infrastructure-blocks/status-report-action@v1
         with:
