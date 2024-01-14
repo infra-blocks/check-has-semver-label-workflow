@@ -5,15 +5,11 @@ on:
     inputs:
       pull-request:
         type: string
-        description: |
-          The PR JSON payload, as string. We're only checking for labels, so as long as the labels fields follow the
-          schema of PRs as described [here](https://docs.github.com/en/webhooks/webhook-events-and-payloads#pull_request),
-          it'll be all right. It defaults github.event.pull_request. If this field is undefined, it throws.
+        description: The stringified PR JSON payload.
         required: false
     outputs:
       matched-label:
-        description: |
-          The matched semantic versioning label. There will only be one.
+        description: The matched semantic versioning label. There will only be one.
         value: ${{ jobs.check-has-semver-label.outputs.matched-label }}
 
 permissions:
