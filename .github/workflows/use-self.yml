@@ -1,0 +1,20 @@
+name: Check Has Semver Label
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - labeled
+      - unlabeled
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check-has-semver-label:
+    uses: ./.github/workflows/check-has-semver-label.yml
+    permissions:
+      pull-requests: write
