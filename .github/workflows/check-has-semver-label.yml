@@ -29,6 +29,7 @@ jobs:
       - uses: infrastructure-blocks/status-report-action@v1
         with:
           mode: clear
+          issue-number: ${{ (inputs.pull-request != '' && fromJson(inputs.pull-request).number) || github.event.pull_request.number }}
       - uses: docker://public.ecr.aws/infrastructure-blocks/check-labels-action:v2
         id: check-labels
         with:
@@ -37,5 +38,6 @@ jobs:
       - if: ${{ failure() }}
         uses: infrastructure-blocks/status-report-action@v1
         with:
+          issue-number: ${{ (inputs.pull-request != '' && fromJson(inputs.pull-request).number) || github.event.pull_request.number }}
           body: |
             :boom: **Error**: expecting exactly one semantic versioning PR label. Please provide one of "no version", "patch", "minor", "major"
