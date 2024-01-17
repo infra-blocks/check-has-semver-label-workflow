@@ -15,6 +15,9 @@ on:
 permissions:
   pull-requests: write
 
+env:
+  status-report-action-repository: infrastructure-blocks/check-has-semver-label-workflow
+
 jobs:
   check-has-semver-label:
     runs-on: ubuntu-22.04
@@ -23,14 +26,16 @@ jobs:
     outputs:
       matched-label: ${{ fromJson(steps.check-labels.outputs.matched-labels)[0] }}
     steps:
+      - uses: infrastructure-blocks/status-report-action@v1
+        with:
+          mode: clear
       - uses: docker://public.ecr.aws/infrastructure-blocks/check-labels-action:v2
         id: check-labels
         with:
           pull-request: ${{ inputs.pull-request }}
-          exactly-once: '["no version", "patch", "minor", "major"]'
+          exactly-once: '["^no version$", "^patch$", "^minor$", "^major$"]'
       - if: ${{ failure() }}
         uses: infrastructure-blocks/status-report-action@v1
         with:
-          repository: infrastructure-blocks/check-has-semver-label-workflow
           body: |
             :boom: **Error**: expecting exactly one semantic versioning PR label. Please provide one of "no version", "patch", "minor", "major"
