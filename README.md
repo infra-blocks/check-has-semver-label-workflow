@@ -35,6 +35,10 @@ N/A
 
 N/A
 
+## Timeouts
+
+N/A
+
 ## Usage
 
 ### Use pull request from event payload
@@ -58,7 +62,7 @@ jobs:
   check-has-semver-label:
     permissions:
       pull-requests: write
-    uses: infrastructure-blocks/check-has-semver-label-workflow/.github/workflows/check-has-semver-label.yml@v1
+    uses: infrastructure-blocks/check-has-semver-label-workflow/.github/workflows/workflow.yml@v1
 ```
 ### Explicitly pass pull request
 
@@ -81,7 +85,7 @@ jobs:
       - get-current-pr
     permissions:
       pull-requests: write
-    uses: infrastructure-blocks/check-has-semver-label-workflow/.github/workflows/check-has-semver-label.yml@v1
+    uses: infrastructure-blocks/check-has-semver-label-workflow/.github/workflows/workflow.yml@v1
     with:
       pull-request: ${{ needs.get-current-pr.outputs.pr }}
 ```
