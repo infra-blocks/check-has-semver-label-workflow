@@ -15,6 +15,6 @@ concurrency:
 
 jobs:
   check-has-semver-label:
-    uses: ./.github/workflows/check-has-semver-label.yml
+    uses: ./.github/workflows/workflow.yml
     permissions:
       pull-requests: write
