@@ -1,4 +1,6 @@
 # check-has-semver-label-workflow
+[![Git Tag Semver From Label](https://github.com/infrastructure-blocks/check-has-semver-label-workflow/actions/workflows/git-tag-semver-from-label.yml/badge.svg)](https://github.com/infrastructure-blocks/check-has-semver-label-workflow/actions/workflows/git-tag-semver-from-label.yml)
+[![Update From Template](https://github.com/infrastructure-blocks/check-has-semver-label-workflow/actions/workflows/update-from-template.yml/badge.svg)](https://github.com/infrastructure-blocks/check-has-semver-label-workflow/actions/workflows/update-from-template.yml)
 
 This workflow checks that a pull request has exactly one semantic versioning label assigned. Those labels
 are:
