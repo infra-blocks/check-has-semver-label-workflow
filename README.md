@@ -78,10 +78,10 @@ jobs:
   get-current-pr:
     runs-on: ubuntu-22.04
     outputs:
-      pr: ${{ steps.get-current-pr.outputs.pr }}
+      pr: ${{ steps.get-current-pr.outputs.json }}
     steps:
       - id: get-current-pr
-        uses: 8BitJonny/gh-get-current-pr@2.2.0
+        uses: infrastructure-blocks/get-current-pull-request-action@v1
   check-has-semver-label:
     needs:
       - get-current-pr
