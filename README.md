@@ -13,9 +13,9 @@ If the PR doesn't have exactly one of those, the action fails and a status repor
 
 ## Inputs
 
-|     Name     | Required | Description                                                                                                                                                                                                                                                                                                                    |
-|:------------:|:--------:|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| pull-request |  false   | The stringified PR JSON payload. We're only checking for labels, so as long as the labels fields follow the schema of PRs as described [here](https://docs.github.com/en/webhooks/webhook-events-and-payloads#pull_request), it'll be all right. It defaults github.event.pull_request. If this field is undefined, it throws. |
+|     Name     | Required | Description                                                                                                                                                                                                                                                                                                                                                           |
+|:------------:|:--------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| pull-request |  false   | The stringified PR JSON payload. We're only checking for labels, so as long as the labels fields follow the schema of PRs as described [here](https://docs.github.com/en/webhooks/webhook-events-and-payloads#pull_request), it'll be all right. It defaults to the [current pull request](https://github.com/infrastructure-blocks/get-current-pull-request-action). |
 
 ## Secrets
 

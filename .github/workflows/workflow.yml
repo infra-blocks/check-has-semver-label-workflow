@@ -26,18 +26,30 @@ jobs:
     outputs:
       matched-label: ${{ fromJson(steps.check-labels.outputs.matched-labels)[0] }}
     steps:
+      - if: ${{ inputs.pull-request == '' }}
+        id: current-pr
+        uses: infrastructure-blocks/get-current-pull-request-action@v1
+      - id: parse-inputs
+        env:
+          ISSUE_JSON: ${{ inputs.pull-request || steps.current-pr.outputs.json }}
+        run: |
+          if test "${{ runner.debug }}" = "1"; then
+            set -x
+          fi
+      
+          echo "issue=${ISSUE_JSON}" >> ${GITHUB_OUTPUT}
       - uses: infrastructure-blocks/status-report-action@v1
         with:
           mode: clear
-          issue-number: ${{ (inputs.pull-request != '' && fromJson(inputs.pull-request).number) || github.event.pull_request.number }}
+          issue-number: ${{ fromJson(steps.parse-inputs.outputs.issue).number }}
       - uses: docker://public.ecr.aws/infrastructure-blocks/check-labels-action:v2
         id: check-labels
         with:
-          pull-request: ${{ inputs.pull-request }}
+          pull-request: ${{ steps.parse-inputs.outputs.issue }}
           exactly-once: '["^no version$", "^patch$", "^minor$", "^major$"]'
       - if: ${{ failure() }}
         uses: infrastructure-blocks/status-report-action@v1
         with:
-          issue-number: ${{ (inputs.pull-request != '' && fromJson(inputs.pull-request).number) || github.event.pull_request.number }}
+          issue-number: ${{ fromJson(steps.parse-inputs.outputs.issue).number }}
           body: |
             :boom: **Error**: expecting exactly one semantic versioning PR label. Please provide one of "no version", "patch", "minor", "major"
