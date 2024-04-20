@@ -65,7 +65,7 @@ jobs:
   check-has-semver-label:
     permissions:
       pull-requests: write
-    uses: infrastructure-blocks/check-has-semver-label-workflow/.github/workflows/workflow.yml@v1
+    uses: infrastructure-blocks/check-has-semver-label-workflow/.github/workflows/workflow.yml@v2
 ```
 ### Explicitly pass pull request
 
@@ -88,7 +88,7 @@ jobs:
       - get-current-pr
     permissions:
       pull-requests: write
-    uses: infrastructure-blocks/check-has-semver-label-workflow/.github/workflows/workflow.yml@v1
+    uses: infrastructure-blocks/check-has-semver-label-workflow/.github/workflows/workflow.yml@v2
     with:
       pull-request: ${{ needs.get-current-pr.outputs.pr }}
 ```
