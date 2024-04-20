@@ -7,6 +7,11 @@ on:
         type: string
         description: The stringified PR JSON payload.
         required: false
+      skip:
+        type: boolean
+        description: Whether to skip the workflow or not.
+        required: false
+        default: false
     outputs:
       matched-label:
         description: The matched semantic versioning label. There will only be one.
@@ -20,6 +25,7 @@ env:
 
 jobs:
   check-has-semver-label:
+    if: ${{ !inputs.skip }}
     runs-on: ubuntu-22.04
     permissions:
       pull-requests: write
