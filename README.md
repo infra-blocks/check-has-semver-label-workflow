@@ -2,6 +2,7 @@
 [![Git Tag Semver From Label](https://github.com/infrastructure-blocks/check-has-semver-label-workflow/actions/workflows/git-tag-semver-from-label.yml/badge.svg)](https://github.com/infrastructure-blocks/check-has-semver-label-workflow/actions/workflows/git-tag-semver-from-label.yml)
 [![Update From Template](https://github.com/infrastructure-blocks/check-has-semver-label-workflow/actions/workflows/update-from-template.yml/badge.svg)](https://github.com/infrastructure-blocks/check-has-semver-label-workflow/actions/workflows/update-from-template.yml)
 
+<<<<<<< HEAD
 This workflow checks that a pull request has exactly one semantic versioning label assigned. Those labels
 are:
 - no version
@@ -10,6 +11,18 @@ are:
 - major
 
 If the PR doesn't have exactly one of those, the action fails and a status report is posted as a PR comment.
+=======
+This repository is a template for creating reusable GitHub Actions Workflows. Go through the below checklist
+upon instantiating this template:
+- Remove the [trigger update from template workflow](.github/workflows/trigger-update-from-template.yml)
+- Edit the content of [the placeholder](.github/workflows/workflow.yml) for your reusable workflow.
+- Update the status badges:
+    - Remove the `Trigger Update From Template` status badge.
+    - Add the `Update From Template` status badge.
+    - Rename the rest of the links to point to the right repository.
+- Edit this document and update the relevant sections
+- Prepare the [changelog](CHANGELOG.md) for the first version of the module that will be released.
+>>>>>>> template/master
 
 ## Inputs
 
