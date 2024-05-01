@@ -24,18 +24,29 @@ env:
   status-report-action-repository: infrastructure-blocks/check-has-semver-label-workflow
 
 jobs:
+<<<<<<< HEAD
   check-has-semver-label:
     if: ${{ !inputs.skip }}
+=======
+  example-job:
+>>>>>>> template/master
     runs-on: ubuntu-22.04
     permissions:
       pull-requests: write
     outputs:
       matched-label: ${{ fromJson(steps.check-labels.outputs.matched-labels)[0] }}
     steps:
+<<<<<<< HEAD
       - if: ${{ inputs.pull-request == '' }}
         id: current-pr
         uses: infrastructure-blocks/get-current-pull-request-action@v1
       - id: parse-inputs
+=======
+      # This condition should be on every step.
+      - if: ${{ !inputs.skip }}
+        id: example-step
+        name: Example step
+>>>>>>> template/master
         env:
           ISSUE_JSON: ${{ inputs.pull-request || steps.current-pr.outputs.json }}
         run: |

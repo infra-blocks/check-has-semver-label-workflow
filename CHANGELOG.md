@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+<<<<<<< HEAD
 ## [2.2.1] - 2024-04-20
 
 ### Fixed
@@ -70,11 +71,15 @@ slightly in that it can now be called from `push` events.
 - Optional `pull-request` input if the pull request from the event payload is not good enough.
 
 ## [1.0.0] - 2024-01-04
+=======
+## [1.0.0] - 2024-05-01
+>>>>>>> template/master
 
 ### Added
 
 - First release!
 
+<<<<<<< HEAD
 [2.2.1]: https://github.com/infrastructure-blocks/check-has-semver-label-workflow/compare/v2.2.0...v2.2.1
 [2.2.0]: https://github.com/infrastructure-blocks/check-has-semver-label-workflow/compare/v2.1.0...v2.2.0
 [2.1.0]: https://github.com/infrastructure-blocks/check-has-semver-label-workflow/compare/v2.0.0...v2.1.0
@@ -86,3 +91,6 @@ slightly in that it can now be called from `push` events.
 [1.1.1]: https://github.com/infrastructure-blocks/check-has-semver-label-workflow/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/infrastructure-blocks/check-has-semver-label-workflow/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/infrastructure-blocks/check-has-semver-label-workflow/releases/tag/v1.0.0
+=======
+[1.0.0]: https://github.com/infrastructure-blocks/github-actions-workflow-template/releases/tag/v0.1.0
+>>>>>>> template/master
