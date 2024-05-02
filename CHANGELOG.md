@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.2] - 2024-05-02
+
+### Fixed
+
+- Use `inputs.skip` at step level, and not at job level. Skipping at job level results in the same issue with
+  required checks paths as skipping at the caller's workflow invocation site (with an `if` expression).
+
 ## [2.2.1] - 2024-04-20
 
 ### Fixed
@@ -75,6 +82,7 @@ slightly in that it can now be called from `push` events.
 
 - First release!
 
+[2.2.2]: https://github.com/infrastructure-blocks/check-has-semver-label-workflow/compare/v2.2.1...v2.2.2
 [2.2.1]: https://github.com/infrastructure-blocks/check-has-semver-label-workflow/compare/v2.2.0...v2.2.1
 [2.2.0]: https://github.com/infrastructure-blocks/check-has-semver-label-workflow/compare/v2.1.0...v2.2.0
 [2.1.0]: https://github.com/infrastructure-blocks/check-has-semver-label-workflow/compare/v2.0.0...v2.1.0

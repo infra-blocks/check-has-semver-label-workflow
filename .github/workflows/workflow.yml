@@ -25,17 +25,17 @@ env:
 
 jobs:
   check-has-semver-label:
-    if: ${{ !inputs.skip }}
     runs-on: ubuntu-22.04
     permissions:
       pull-requests: write
     outputs:
       matched-label: ${{ fromJson(steps.check-labels.outputs.matched-labels)[0] }}
     steps:
-      - if: ${{ inputs.pull-request == '' }}
+      - if: ${{ !inputs.skip && inputs.pull-request == '' }}
         id: current-pr
         uses: infrastructure-blocks/get-current-pull-request-action@v1
-      - id: parse-inputs
+      - if: ${{ !inputs.skip }}
+        id: parse-inputs
         env:
           ISSUE_JSON: ${{ inputs.pull-request || steps.current-pr.outputs.json }}
         run: |
@@ -44,16 +44,18 @@ jobs:
           fi
       
           echo "issue=${ISSUE_JSON}" >> ${GITHUB_OUTPUT}
-      - uses: infrastructure-blocks/status-report-action@v1
+      - if: ${{ !inputs.skip }}
+        uses: infrastructure-blocks/status-report-action@v1
         with:
           mode: clear
           issue-number: ${{ fromJson(steps.parse-inputs.outputs.issue).number }}
-      - uses: docker://public.ecr.aws/infrastructure-blocks/check-labels-action:v2
+      - if: ${{ !inputs.skip }}
+        uses: docker://public.ecr.aws/infrastructure-blocks/check-labels-action:v2
         id: check-labels
         with:
           pull-request: ${{ steps.parse-inputs.outputs.issue }}
           exactly-once: '["^no version$", "^patch$", "^minor$", "^major$"]'
-      - if: ${{ failure() }}
+      - if: ${{ !inputs.skip && failure() }}
         uses: infrastructure-blocks/status-report-action@v1
         with:
           issue-number: ${{ fromJson(steps.parse-inputs.outputs.issue).number }}
