@@ -21,7 +21,7 @@ permissions:
   pull-requests: write
 
 env:
-  status-report-action-repository: infrastructure-blocks/check-has-semver-label-workflow
+  status-report-action-repository: infra-blocks/check-has-semver-label-workflow
 
 jobs:
   check-has-semver-label:
@@ -33,7 +33,7 @@ jobs:
     steps:
       - if: ${{ !inputs.skip && inputs.pull-request == '' }}
         id: current-pr
-        uses: infrastructure-blocks/get-current-pull-request-action@v1
+        uses: infra-blocks/get-current-pull-request-action@v1
       - if: ${{ !inputs.skip }}
         id: parse-inputs
         env:
@@ -45,18 +45,18 @@ jobs:
       
           echo "issue=${ISSUE_JSON}" >> ${GITHUB_OUTPUT}
       - if: ${{ !inputs.skip }}
-        uses: infrastructure-blocks/status-report-action@v1
+        uses: infra-blocks/status-report-action@v1
         with:
           mode: clear
           issue-number: ${{ fromJson(steps.parse-inputs.outputs.issue).number }}
       - if: ${{ !inputs.skip }}
-        uses: docker://public.ecr.aws/infrastructure-blocks/check-labels-action:v2
+        uses: docker://public.ecr.aws/infra-blocks/check-labels-action:v2
         id: check-labels
         with:
           pull-request: ${{ steps.parse-inputs.outputs.issue }}
           exactly-once: '["^no version$", "^patch$", "^minor$", "^major$"]'
       - if: ${{ !inputs.skip && failure() }}
-        uses: infrastructure-blocks/status-report-action@v1
+        uses: infra-blocks/status-report-action@v1
         with:
           issue-number: ${{ fromJson(steps.parse-inputs.outputs.issue).number }}
           body: |
