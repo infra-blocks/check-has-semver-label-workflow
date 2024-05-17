@@ -82,15 +82,15 @@ slightly in that it can now be called from `push` events.
 
 - First release!
 
-[2.2.2]: https://github.com/infrastructure-blocks/check-has-semver-label-workflow/compare/v2.2.1...v2.2.2
-[2.2.1]: https://github.com/infrastructure-blocks/check-has-semver-label-workflow/compare/v2.2.0...v2.2.1
-[2.2.0]: https://github.com/infrastructure-blocks/check-has-semver-label-workflow/compare/v2.1.0...v2.2.0
-[2.1.0]: https://github.com/infrastructure-blocks/check-has-semver-label-workflow/compare/v2.0.0...v2.1.0
-[2.0.0]: https://github.com/infrastructure-blocks/check-has-semver-label-workflow/compare/v1.2.0...v2.0.0
-[1.2.0]: https://github.com/infrastructure-blocks/check-has-semver-label-workflow/compare/v1.1.4...v1.2.0
-[1.1.4]: https://github.com/infrastructure-blocks/check-has-semver-label-workflow/compare/v1.1.3...v1.1.4
-[1.1.3]: https://github.com/infrastructure-blocks/check-has-semver-label-workflow/compare/v1.1.2...v1.1.3
-[1.1.2]: https://github.com/infrastructure-blocks/check-has-semver-label-workflow/compare/v1.1.1...v1.1.2
-[1.1.1]: https://github.com/infrastructure-blocks/check-has-semver-label-workflow/compare/v1.1.0...v1.1.1
-[1.1.0]: https://github.com/infrastructure-blocks/check-has-semver-label-workflow/compare/v1.0.0...v1.1.0
-[1.0.0]: https://github.com/infrastructure-blocks/check-has-semver-label-workflow/releases/tag/v1.0.0
+[2.2.2]: https://github.com/infra-blocks/check-has-semver-label-workflow/compare/v2.2.1...v2.2.2
+[2.2.1]: https://github.com/infra-blocks/check-has-semver-label-workflow/compare/v2.2.0...v2.2.1
+[2.2.0]: https://github.com/infra-blocks/check-has-semver-label-workflow/compare/v2.1.0...v2.2.0
+[2.1.0]: https://github.com/infra-blocks/check-has-semver-label-workflow/compare/v2.0.0...v2.1.0
+[2.0.0]: https://github.com/infra-blocks/check-has-semver-label-workflow/compare/v1.2.0...v2.0.0
+[1.2.0]: https://github.com/infra-blocks/check-has-semver-label-workflow/compare/v1.1.4...v1.2.0
+[1.1.4]: https://github.com/infra-blocks/check-has-semver-label-workflow/compare/v1.1.3...v1.1.4
+[1.1.3]: https://github.com/infra-blocks/check-has-semver-label-workflow/compare/v1.1.2...v1.1.3
+[1.1.2]: https://github.com/infra-blocks/check-has-semver-label-workflow/compare/v1.1.1...v1.1.2
+[1.1.1]: https://github.com/infra-blocks/check-has-semver-label-workflow/compare/v1.1.0...v1.1.1
+[1.1.0]: https://github.com/infra-blocks/check-has-semver-label-workflow/compare/v1.0.0...v1.1.0
+[1.0.0]: https://github.com/infra-blocks/check-has-semver-label-workflow/releases/tag/v1.0.0
