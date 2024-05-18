@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.3] - 2024-05-18
+
+### Changed
+
+- Migrated to the [infra-blocks](https://github.com/infra-blocks) organization.
+
 ## [2.2.2] - 2024-05-02
 
 ### Fixed
@@ -82,6 +88,7 @@ slightly in that it can now be called from `push` events.
 
 - First release!
 
+[2.2.3]: https://github.com/infra-blocks/check-has-semver-label-workflow/compare/v2.2.2...v2.2.3
 [2.2.2]: https://github.com/infra-blocks/check-has-semver-label-workflow/compare/v2.2.1...v2.2.2
 [2.2.1]: https://github.com/infra-blocks/check-has-semver-label-workflow/compare/v2.2.0...v2.2.1
 [2.2.0]: https://github.com/infra-blocks/check-has-semver-label-workflow/compare/v2.1.0...v2.2.0
